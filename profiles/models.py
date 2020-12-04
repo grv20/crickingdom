@@ -11,14 +11,14 @@ class Subject(models.Model):
 
 class Teacher(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    subjects = models.ManyToManyField(Subject, null=True, blank=True)
+    subjects = models.ManyToManyField(Subject, related_name='teachers', null=True, blank=True)
 
     def __str__(self):
         return self.user.username
 
 class Student(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    teachers = models.ManyToManyField(Teacher, null=True, blank=True)
+    teachers = models.ManyToManyField(Teacher, related_name='students', null=True, blank=True)
 
     def __str__(self):
         return self.user.username

@@ -45,3 +45,8 @@ class StudentListSerializer(serializers.ModelSerializer):
         qs = obj.teachers.all()
         teachers = TeacherListSerializer(qs, many=True)
         return teachers.data
+
+class SubjectCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Subject
+        fields = ["id","name"]
