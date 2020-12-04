@@ -1,16 +1,5 @@
 from rest_framework import serializers
-
 from .models import Student, Teacher, Subject
-
-from rest_framework_simplejwt.views import TokenObtainPairView
-
-class MyTokenObtainPairSerializer(TokenObtainPairView):
-    @classmethod
-    def get_token(cls,user):
-        token = super(MyTokenObtainPairSerializer, cls).get_token(user)
-
-        token['username'] = user.username
-        return token
 
 class TeacherListSerializer(serializers.ModelSerializer):
     name =  serializers.SerializerMethodField(read_only=True)
@@ -55,7 +44,4 @@ class StudentListSerializer(serializers.ModelSerializer):
     def get_teachers(self,obj):
         qs = obj.teachers.all()
         teachers = TeacherListSerializer(qs, many=True)
-        # teachers = []
-        # for teacher in obj.teachers.all():
-        #     teachers.append(TeacherListSerializer(source=teacher))
         return teachers.data

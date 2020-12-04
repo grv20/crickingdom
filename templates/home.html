@@ -16,7 +16,6 @@
             <th>Student Name</th>
             <th>Teachers</th>
             <th>Subjects</th>
-            <!-- <th>Village</th> -->
             <th></th>
           </tr>
         </thead>
@@ -33,7 +32,6 @@
             <td>{% for teacher in student.teachers %}
                 {% for subject in teacher.subjects %}
                 {{subject}}{% endfor %}{% endfor %}</td>
-            <!-- <td>{{case.village}}</td> -->
             
           </tr>
         </div>
@@ -41,7 +39,8 @@
 
     </table>
    
-    
+    <a class="btn btn-primary" href="/api/profiles/">Click to view API</a> 
   </div>
+  
   </div>
 {% endblock %}
