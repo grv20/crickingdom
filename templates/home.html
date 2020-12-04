@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block head_title %} : Home {% endblock head_title %}
+
+
+{% block content %}
+<br />
+<div class="col-md-12 my-2">
+    <h5>Students:</h5>
+    <hr>
+    <div class="card card-body">
+      <table class="table  table-striped table-dark">
+        <thead class="thead-dark">
+          <tr>
+            <th>ID</th>
+            <th>Student Name</th>
+            <th>Teachers</th>
+            <th>Subjects</th>
+            <!-- <th>Village</th> -->
+            <th></th>
+          </tr>
+        </thead>
+        </div>
+      {% for student in students %}
+
+        <div >
+          <tr id="thd">
+            <td>{{student.id}}</td>
+            <td>{{student.student_name}}</td>
+            <td>{% for teacher in student.teachers %}
+                {{teacher.name}}{% endfor %}
+            </td>
+            <td>{% for teacher in student.teachers %}
+                {% for subject in teacher.subjects %}
+                {{subject}}{% endfor %}{% endfor %}</td>
+            <!-- <td>{{case.village}}</td> -->
+            
+          </tr>
+        </div>
+      {% endfor %}
+
+    </table>
+   
+    
+  </div>
+  </div>
+{% endblock %}
